@@ -8,7 +8,13 @@ Find and return the maximum profit you can achieve.
 链接：https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2zsx1/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-*/
+
+
+/**
+    1. Verify that the previous number is less than the next number
+    2. Calculate the difference of two numbers 
+    3. Adding all the difference 
+ */
 
 /**
  * @param {number[]} prices
@@ -17,8 +23,24 @@ Find and return the maximum profit you can achieve.
 
 let prices = [7, 1, 5, 3, 6, 4]
 
-var maxProfit = function (prices) {
-
-
-
+let verifyTwoNum = function (prices, index) {
+  for (; index <= prices.length; index++) {
+    if (prices[index] < prices[index + 1]) {
+      return true
+    } else return false
+  }
 }
+
+var maxProfit = function (prices) {
+  let i = 0
+  let result = 0
+  while (i <= prices.length) {
+    if (verifyTwoNum(prices, i)) {
+      result = result + (prices[i + 1] - prices[i])
+    }
+    i++
+  }
+  return result
+}
+
+console.log(maxProfit(prices))
