@@ -13,22 +13,36 @@
 let nums1 = [1, 2, 2, 1]
 let nums2 = [2, 2]
 
+var checkLength = function (nums1, nums2) {
+  if (nums1.length > nums2.length) {
+    return false
+  } else {
+    return true
+  }
+}
+
 nums1.sort((a, b) => a - b)
 nums2.sort((a, b) => a - b)
 var intersect = function (nums1, nums2) {
-  let temp = []
+  let temp = new Set()
   let left = 0
   let right = 0
-  while (left < nums1.length) {
+
+  let fLength = checkLength(nums1, nums2)
+
+  if (!fLength) {
+  }
+
+  while (left < nums1.length && right < nums2.length) {
     if (nums1[left] === nums2[right]) {
-      temp.push(nums1[left])
+      temp.add(nums1[left])
       left++
       right++
     } else if (nums1[left] > nums2[right]) {
       right++
     } else if (nums1[left] < nums2[right]) {
       left++
-      right++
+      // right++
     }
   }
   return temp
