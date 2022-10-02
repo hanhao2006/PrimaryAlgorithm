@@ -31,7 +31,7 @@ Do not allocate extra space for another array. You must do this by modifying the
  * @param {number[]} nums
  * @return {number}
  */
-let nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+let nums = [1, 1, 2]
 
 const k = function (nums) {
   let left = 0
@@ -44,4 +44,8 @@ const k = function (nums) {
   return left
 }
 
-console.log(k(nums));
+const removeDulicates = function (nums) {
+  return [...new Set(nums)]
+}
+
+console.log(removeDulicates(nums))
